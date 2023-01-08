@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin: 16px 0;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.container:first-child {
+    margin-top: 0;
+}
+
+.container:last-child {
+    margin-bottom: 24px;
+}
+
+.container:hover {
+    background-color: #F5F5F5;
+    transition: background-color 0s;
+}
+
+.container:hover .removeIcon {
+    visibility: visible;
+}
+
+.unCheckedCircleIcon {
+    font-size: 24px;
+    margin-right: 16px;
+    color: #C0C0C0;
+    cursor: pointer;
+}
+
+.strikethrough {
+    text-decoration:line-through;
+    color: #C0C0C0;
+}
+
+.checkedCircleIcon {
+    font-size: 24px;
+    margin-right: 16px;
+    color: #32CD32;
+    cursor: pointer;
+}
+
+.removeIcon {
+    font-size: 28px;
+    margin-left: auto;
+    cursor: pointer;
+    color: red;
+    visibility: hidden;
+}
