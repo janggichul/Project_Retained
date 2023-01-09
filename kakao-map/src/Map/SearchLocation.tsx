@@ -3,10 +3,9 @@ import { FormEvent, useEffect, useRef, useState } from 'react';
 import { useMap } from '../hooks/useMap';
 import { PlaceType } from './mapTypes';
 
-
-
 interface SearchLocationProps {
   onUpdatePlaces: (places: PlaceType[]) => void;
+  onSelect: (placeid: string) => void;
 }
 
 const SearchLocation = (props: SearchLocationProps) => {
@@ -71,6 +70,7 @@ const SearchLocation = (props: SearchLocationProps) => {
   const handleItemClick = (place: PlaceType) => {
     map.setCenter(place.position);
     map.setLevel(4);
+    props.onSelect(place.id);
   };
 
   return (

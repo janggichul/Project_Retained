@@ -7,15 +7,22 @@ import SearchLocation from './Map/SearchLocation';
 
 function App() {
   const [places, setPlaces] = useState<PlaceType[]>([]);
+  const [selectedPlaceId, setSelectedPlaceId] = useState('');
 
   return (
     <>
       <KakaoMapScriptLoader>
         <DynamicMap>
-          <MapMArkerController places={places} />
+          <MapMArkerController
+            places={places}
+            seletedPlaceID={selectedPlaceId}
+          />
           <SearchLocation
             onUpdatePlaces={(places) => {
               setPlaces(places);
+            }}
+            onSelect={(placeId) => {
+              setSelectedPlaceId(placeId);
             }}
           />
         </DynamicMap>

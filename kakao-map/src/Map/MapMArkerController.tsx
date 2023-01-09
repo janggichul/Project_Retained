@@ -5,6 +5,7 @@ import { PlaceType } from './mapTypes';
 
 interface MapMArkerControllerProps {
   places: PlaceType[];
+  seletedPlaceID?: string;
 }
 
 const MapMArkerController = (props: MapMArkerControllerProps) => {
@@ -25,7 +26,14 @@ const MapMArkerController = (props: MapMArkerControllerProps) => {
   return (
     <>
       {props.places.map((place, index) => {
-        return <MapMaker key={place.id} place={place} />;
+        return (
+          <MapMaker
+            key={place.id}
+            place={place}
+            showInfo={props.seletedPlaceID === place.id}
+            index={index}
+          />
+        );
       })}
     </>
   );
