@@ -22,7 +22,7 @@
      배포 주소 : https://project-retained.vercel.app/
 
 
-##4. 나만의 서비스 만들기
+## 4. 나만의 서비스 만들기
 
 프로젝트 설계 
 
