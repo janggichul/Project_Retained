@@ -38,7 +38,13 @@ function QustionPage(): React.ReactElement {
     if (QustionData.length !== qustionNo + 1) {
       setQustionNo(qustionNo + 1);
     } else {
-      const mbti = 'ENTJ';
+      const mbti = newScore.reduce(
+        (acc, cur) =>
+          acc +
+          (cur.score <= 2 ? cur.id.substring(0, 1) : cur.id.substring(1.2)),
+        '',
+      );
+
       navigate({
         pathname: '/result',
         search: `?${createSearchParams({

@@ -13,7 +13,7 @@ export const ResultData: IResult[] = [
   {
     id: 2,
     name: '빠삐용',
-    best: 'ISTJ',
+    best: 'ISTP',
     mbti: 'ISFJ',
     desc: '섬세하고 예민한 편이며, 타인의 감정변화를 잘 알아차리고 질투심이 많음',
     image: `${April}`,
@@ -21,9 +21,9 @@ export const ResultData: IResult[] = [
   {
     id: 3,
     name: '시바견',
-    best: 'ISFP',
+    best: 'ISIJ',
     mbti: 'ISTP',
-    desc: '의심이 많은 편이며 독립적이고 하기 싫은건 절대 안하는 자기주장이 강한 마이웨이스타일',
+    desc: '의심이 많은 편이며 독립적이고 하기 싫은건 절대 안하는 자기주장이 강한 마이웨이 스타일입니다',
     image: `${April}`,
   },
   {
