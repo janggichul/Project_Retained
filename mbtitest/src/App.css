@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Jalnan';
 }
 
 .App-logo {
@@ -7,7 +8,12 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@font-face {
+  font-family: 'JAlnan';
+  src: url(/src/assets/fonts/Jalnan.ttf);
+}
+
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
@@ -35,4 +41,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
