@@ -1,0 +1,18 @@
+.Image {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.labelpos {
+    display: flex;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
