@@ -8,7 +8,7 @@ export default function Login({setIsLogin, setUser}) {
     const [password, setPassword] = useState('');
 
     const login = () => {
-        axios({
+        axios.get({
           url: "http://localhost:8123/login",
           method: "POST",
           withCredentials: true,
