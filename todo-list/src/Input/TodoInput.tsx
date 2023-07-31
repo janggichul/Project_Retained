@@ -46,8 +46,8 @@ const TodoInput = () => {
           onChange={handleTodoOnChange}
         />
         <button type="submit" className={css.enter}>
-          <RiChatNewLine />
-        </button>
+          <RiChatNewLine />  
+                </button>
       </form>
     </section>
   );
