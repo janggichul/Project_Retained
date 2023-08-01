@@ -2,6 +2,8 @@ import "./App.css";
 
 import * as FileSaver from "file-saver";
 import * as XLSX from "xlsx";
+import price from "./img/price.jpeg";
+import price1 from "./img/price1.jpeg";
 
 const ReactExcelDownload = () => {
   const data = [
@@ -37,8 +39,8 @@ const ReactExcelDownload = () => {
       id: 5,
       title: "버터링 딥초코 ",
       quantity: Number(10),
-      price: Number(5100),
-      totalPrice: Number(10) * Number(5100),
+      price: Number(3000),
+      totalPrice: Number(10) * Number(3000),
     },
     {
       id: 6,
@@ -268,8 +270,8 @@ const ReactExcelDownload = () => {
       id: 36,
       title: "헤이루 시리얼 득템",
       quantity: Number(5),
-      price: Number(2300),
-      totalPrice: Number(5) * Number(2300),
+      price: Number(3200),
+      totalPrice: Number(5) * Number(3200),
     },
     {
       id: 37,
@@ -290,7 +292,7 @@ const ReactExcelDownload = () => {
       title: "큐브탱키위젤리",
       quantity: Number(5),
       price: Number(1800),
-      totalPrice: Number(5) * Number(2000),
+      totalPrice: Number(5) * Number(1800),
     },
     {
       id: 40,
@@ -380,6 +382,51 @@ const ReactExcelDownload = () => {
     },
   ];
 
+  const data1 = [
+    {
+      id: 1,
+      title: "토",
+      quantity: "2023년 6월 17일",
+      price: Number(464100),
+    },
+    {
+      id: 2,
+      title: "토",
+      quantity: "2023년 6월 24일",
+      price: Number(419250),
+    },
+    {
+      id: 3,
+      title: "토",
+      quantity: "2023년 7월 1일",
+      price: Number(497690),
+    },
+    {
+      id: 4,
+      title: "토",
+      quantity: "2023년 7월 8일",
+      price: Number(571350),
+    },
+    {
+      id: 5,
+      title: "토",
+      quantity: "2023년 7월 15일",
+      price: Number(404900),
+    },
+    {
+      id: 6,
+      title: "토",
+      quantity: "2023년 7월 22일",
+      price: Number(486250),
+    },
+    {
+      id: 7,
+      title: "토",
+      quantity: "2023년 7월 29일",
+      price: Number(351230),
+    },
+  ];
+
   const excelFileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
   const excelFileExtension = ".xlsx";
   const excelFileName = "상품피해현황";
@@ -427,6 +474,52 @@ const ReactExcelDownload = () => {
     FileSaver.saveAs(excelFile, excelFileName + excelFileExtension);
   };
 
+  const excelFileName1 = "영업손해액";
+
+  const excelDownload1 = excelData => {
+    const ws = XLSX.utils.aoa_to_sheet([
+      [`생성_React_xlsx`],
+      [],
+      ["7월 토요일 일매출 평균 49만원 / 공사일(29일) 매출 35만원"],
+      ["영업손해액_14만원"],
+      ["요일", "일자", "판매금액"],
+    ]);
+    excelData.map(data1 => {
+      XLSX.utils.sheet_add_aoa(ws, [[data1.title, data1.quantity, data1.price, data1.totalPrice]], {origin: -1});
+      ws["!cols"] = [
+        {
+          wpx: 100,
+          alignment: {
+            horizontal: "center",
+          },
+        },
+        {
+          wpx: 100,
+          alignment: {
+            horizontal: "center",
+          },
+        },
+        {
+          wpx: 150,
+          alignment: {
+            horizontal: "center",
+          },
+        },
+        {
+          wpx: 150,
+          alignment: {
+            horizontal: "center",
+          },
+        },
+      ];
+      return false;
+    });
+    const wb = {Sheets: {data: ws}, SheetNames: ["data"]};
+    const excelButter = XLSX.write(wb, {bookType: "xlsx", type: "array"});
+    const excelFile = new Blob([excelButter], {type: excelFileType});
+    FileSaver.saveAs(excelFile, excelFileName1 + excelFileExtension);
+  };
+
   return (
     <div class="w-full h-screen bg-gray-100 pt-8">
       <div class="bg-white p-3 max-w-md mx-auto">
@@ -464,6 +557,94 @@ const ReactExcelDownload = () => {
                     <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"></path>
                   </svg>
                   <button onClick={() => excelDownload(data)}>Download</button>
+                </button>
+              </div>
+              <hr class="mt-2" />
+            </li>
+            <li class="p-2 rounded-lg">
+              <div class="flex align-middle flex-row justify-between">
+                <div class="p-2">
+                  <input type="checkbox" class="h-6 w-6 " value="true" checked />
+                </div>
+                <div class="p-2">
+                  <p class="text-lg text-gray-800">영업손해액</p>
+                </div>
+                <button class="flex text-green-500 border-2 border-green-500 p-2 rounded-lg">
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 -3 22 22"
+                    height="25px"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.354 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+                    ></path>
+                    <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"></path>
+                  </svg>
+                  <button onClick={() => excelDownload1(data1)}>Download</button>
+                </button>
+              </div>
+              <hr class="mt-2" />
+            </li>
+            <li class="p-2 rounded-lg">
+              <div class="flex align-middle flex-row justify-between">
+                <div class="p-2">
+                  <input type="checkbox" class="h-6 w-6 " value="true" checked />
+                </div>
+                <div class="p-2">
+                  <p class="text-lg text-gray-800">상품가_1</p>
+                </div>
+                <button class="flex text-green-500 border-2 border-green-500 p-2 rounded-lg">
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 -3 22 22"
+                    height="25px"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.354 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+                    ></path>
+                    <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"></path>
+                  </svg>
+                  <a href={price} download>
+                    Download
+                  </a>
+                </button>
+              </div>
+              <hr class="mt-2" />
+            </li>
+            <li class="p-2 rounded-lg">
+              <div class="flex align-middle flex-row justify-between">
+                <div class="p-2">
+                  <input type="checkbox" class="h-6 w-6 " value="true" checked />
+                </div>
+                <div class="p-2">
+                  <p class="text-lg text-gray-800">상품가_2</p>
+                </div>
+                <button class="flex text-green-500 border-2 border-green-500 p-2 rounded-lg">
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 -3 22 22"
+                    height="25px"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10.354 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+                    ></path>
+                    <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"></path>
+                  </svg>
+                  <a href={price1} download>
+                    Download
+                  </a>
                 </button>
               </div>
               <hr class="mt-2" />
