@@ -362,6 +362,22 @@ const ReactExcelDownload = () => {
       price: Number(1700),
       totalPrice: Number(1) * Number(1700),
     },
+    {
+      id: 52,
+      title: "나무의자",
+      quantity: Number(4),
+      price: Number(66780),
+      totalPrice: Number(4) * Number(66780),
+      url: "http://itempage3.auction.co.kr/DetailView.aspx?ItemNo=D224286304&frm3=V2",
+    },
+    {
+      id: 53,
+      title: "나무테이블",
+      quantity: Number(1),
+      price: Number(107800),
+      totalPrice: Number(1) * Number(107800),
+      url: "https://smartstore.naver.com/dongbang95/products/4806349283?NaPm=ct%3Dlkrmz1jk%7Cci%3Df164b205672bd5080db6fb25708e4adf7d99973b%7Ctr%3Dslsl%7Csn%3D957209%7Chk%3Deb8dbf2f9cba88d307170015bdbdd21f2b30424f",
+    },
   ];
 
   const excelFileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
@@ -372,11 +388,11 @@ const ReactExcelDownload = () => {
     const ws = XLSX.utils.aoa_to_sheet([
       [`생성_React_xlsx`],
       [],
-      ["합계_680900"],
+      ["합계_1,055,820"],
       ["상품이름", "수량", "가격", "총 가격"],
     ]);
     excelData.map(data => {
-      XLSX.utils.sheet_add_aoa(ws, [[data.title, data.quantity, data.price, data.totalPrice]], {origin: -1});
+      XLSX.utils.sheet_add_aoa(ws, [[data.title, data.quantity, data.price, data.totalPrice, data.url]], {origin: -1});
       ws["!cols"] = [
         {
           wpx: 200,
